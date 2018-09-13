@@ -23,6 +23,24 @@ func TestAppMention(t *testing.T) {
 	}
 }
 
+func TestAppHome(t *testing.T) {
+	rawE := []byte(`
+		{
+			"type": "app_home",
+			"user": "U061F7AUR",
+			"text": "<@U0LAN0Z89> is it everything a river should be?",
+			"ts": "1515449522.000016",
+			"channel": "D0LAN2Q65",
+			"channel_type": "app_home",
+			"event_ts": "1515449522000016"
+		}
+	`)
+	err := json.Unmarshal(rawE, &AppHomeEvent{})
+	if err != nil {
+		t.Error(err)
+	}
+}
+
 func TestAppUninstalled(t *testing.T) {
 	rawE := []byte(`
 		{
